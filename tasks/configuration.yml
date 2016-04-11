@@ -65,6 +65,7 @@
     src: "{{ nginx_conf_dir }}/sites-available/{{ item }}.conf"
     dest: "{{ nginx_conf_dir }}/sites-enabled/{{ item }}.conf"
   with_items: nginx_sites.keys()
+  ignore_errors: yes
   notify:
     - "reload nginx"
   tags:
